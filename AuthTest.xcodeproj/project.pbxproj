@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B9133777273EB35B006114A3 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9133776273EB35B006114A3 /* AlbumsViewController.swift */; };
+		B913377A273EB437006114A3 /* AlbumsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9133779273EB437006114A3 /* AlbumsTableViewCell.swift */; };
+		B913377D273EB72F006114A3 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B913377C273EB72F006114A3 /* UserInfoViewController.swift */; };
+		B9133780273EB7E1006114A3 /* DetailAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B913377F273EB7E1006114A3 /* DetailAlbumViewController.swift */; };
 		B9227305273C1C3400797BE2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9227304273C1C3400797BE2 /* AppDelegate.swift */; };
 		B9227307273C1C3400797BE2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9227306273C1C3400797BE2 /* SceneDelegate.swift */; };
 		B9227309273C1C3400797BE2 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9227308273C1C3400797BE2 /* AuthViewController.swift */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B9133776273EB35B006114A3 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
+		B9133779273EB437006114A3 /* AlbumsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTableViewCell.swift; sourceTree = "<group>"; };
+		B913377C273EB72F006114A3 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
+		B913377F273EB7E1006114A3 /* DetailAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAlbumViewController.swift; sourceTree = "<group>"; };
 		B9227301273C1C3400797BE2 /* AuthTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuthTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9227304273C1C3400797BE2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B9227306273C1C3400797BE2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +67,10 @@
 				B9227304273C1C3400797BE2 /* AppDelegate.swift */,
 				B9227306273C1C3400797BE2 /* SceneDelegate.swift */,
 				B9227308273C1C3400797BE2 /* AuthViewController.swift */,
+				B9133776273EB35B006114A3 /* AlbumsViewController.swift */,
+				B913377F273EB7E1006114A3 /* DetailAlbumViewController.swift */,
+				B913377C273EB72F006114A3 /* UserInfoViewController.swift */,
+				B9133779273EB437006114A3 /* AlbumsTableViewCell.swift */,
 				B922730A273C1C3400797BE2 /* Main.storyboard */,
 				B922730D273C1C3800797BE2 /* Assets.xcassets */,
 				B922730F273C1C3800797BE2 /* LaunchScreen.storyboard */,
@@ -137,8 +149,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9133777273EB35B006114A3 /* AlbumsViewController.swift in Sources */,
+				B9133780273EB7E1006114A3 /* DetailAlbumViewController.swift in Sources */,
+				B913377D273EB72F006114A3 /* UserInfoViewController.swift in Sources */,
 				B9227309273C1C3400797BE2 /* AuthViewController.swift in Sources */,
 				B9227305273C1C3400797BE2 /* AppDelegate.swift in Sources */,
+				B913377A273EB437006114A3 /* AlbumsTableViewCell.swift in Sources */,
 				B9227307273C1C3400797BE2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
