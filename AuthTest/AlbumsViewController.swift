@@ -8,7 +8,7 @@
 import UIKit
 
 class AlbumsViewController: UIViewController {
-        
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .white
@@ -56,20 +56,20 @@ class AlbumsViewController: UIViewController {
         
     }
 }
-    
-    //MARK: - UITableViewDataSource
-    
-    extension AlbumsViewController: UITableViewDataSource {
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            10
-        }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? AlbumsTableViewCell
-            
-            return cell ?? UITableViewCell()
-        }
+
+//MARK: - UITableViewDataSource
+
+extension AlbumsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        10
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? AlbumsTableViewCell
+        
+        return cell ?? UITableViewCell()
+    }
+}
 
 //MARK: - UITableViewDelegate
 extension AlbumsViewController: UITableViewDelegate {
@@ -87,7 +87,7 @@ extension AlbumsViewController: UITableViewDelegate {
 //MARK: - UISearchBarDelegate
 extension AlbumsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-          
+        
         print(searchText)
     }
 }
@@ -105,7 +105,7 @@ extension AlbumsViewController {
         ])
     }
 }
-    
+
 extension UIViewController {
     
     func createCustomButton(selector: Selector) -> UIBarButtonItem {

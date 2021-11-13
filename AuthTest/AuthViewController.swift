@@ -84,13 +84,13 @@ class AuthViewController: UIViewController {
     
     @objc func signUpButtonTapped() {
         let signUpViewController = SignUpViewController()
-                self.present(signUpViewController, animated: true)
+        self.present(signUpViewController, animated: true)
     }
     
     @objc func signInButtonTapped() {
         let navVC = UINavigationController(rootViewController: AlbumsViewController())
-                navVC.modalPresentationStyle = .fullScreen
-                self.present(navVC, animated: true)
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true)
     }
     
     
@@ -119,9 +119,6 @@ class AuthViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
-    
-    
-    
     
 }
 
