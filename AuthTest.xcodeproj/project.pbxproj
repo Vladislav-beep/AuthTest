@@ -17,6 +17,7 @@
 		B922730C273C1C3400797BE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B922730A273C1C3400797BE2 /* Main.storyboard */; };
 		B922730E273C1C3800797BE2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B922730D273C1C3800797BE2 /* Assets.xcassets */; };
 		B9227311273C1C3800797BE2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B922730F273C1C3800797BE2 /* LaunchScreen.storyboard */; };
+		B9D2C90B2740080C00394A83 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D2C90A2740080C00394A83 /* UIStackView + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B922730D273C1C3800797BE2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B9227310273C1C3800797BE2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B9227312273C1C3800797BE2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9D2C90A2740080C00394A83 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				B9227304273C1C3400797BE2 /* AppDelegate.swift */,
 				B9227306273C1C3400797BE2 /* SceneDelegate.swift */,
 				B9227308273C1C3400797BE2 /* AuthViewController.swift */,
+				B9D2C90A2740080C00394A83 /* UIStackView + Extension.swift */,
 				B9133776273EB35B006114A3 /* AlbumsViewController.swift */,
 				B913377F273EB7E1006114A3 /* DetailAlbumViewController.swift */,
 				B913377C273EB72F006114A3 /* UserInfoViewController.swift */,
@@ -156,6 +159,7 @@
 				B9227305273C1C3400797BE2 /* AppDelegate.swift in Sources */,
 				B913377A273EB437006114A3 /* AlbumsTableViewCell.swift in Sources */,
 				B9227307273C1C3400797BE2 /* SceneDelegate.swift in Sources */,
+				B9D2C90B2740080C00394A83 /* UIStackView + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
