@@ -128,6 +128,10 @@ class SignUpViewController: UIViewController {
     private var elementsStackView = UIStackView()
     private let datePicker = UIDatePicker()
     
+    let nameValidType: String.ValidTypes = .name
+    let emailValidType: String.ValidTypes = .email
+    let passwordValidTyper: String.ValidTypes = .password
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -189,6 +193,29 @@ class SignUpViewController: UIViewController {
     @objc private func signUpButtonTapped() {
         print("SignUpTap")
     }
+    
+    private func setTextField(textField: UITextField, label: UILabel, validType: String.ValidTypes, validMessage: String, wrongMessage: String, string: String, range: NSRange) {
+        
+        let text = (textField.text ?? "") + string
+        let result: String
+        
+        if range.length == 1 {
+            let end = text.index(text.startIndex, offsetBy: text.count - 1)
+            result = String(text[text.startIndex..<end])
+        } else {
+            result = text
+        }
+        
+        textField.text = result
+        
+        if result.isValid(validType: validType) {
+            label.text = validMessage
+            label.textColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        } else {
+            label.text = wrongMessage
+            label.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        }
+    }
 }
 
 
@@ -196,6 +223,18 @@ class SignUpViewController: UIViewController {
 extension SignUpViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        switch textField {
+        case firstNameTextField: setTextField(textField: textField,
+                                              label: firstNameValidLabel,
+                                              validType: nameValidType,
+                                              validMessage: "Name is valid",
+                                              wrongMessage: "Name is not valid",
+                                              string: string,
+                                              range: range)
+        default:
+            break
+        }
         
         return false
     }
