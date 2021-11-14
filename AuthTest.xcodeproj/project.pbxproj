@@ -70,22 +70,46 @@
 		B9227303273C1C3400797BE2 /* AuthTest */ = {
 			isa = PBXGroup;
 			children = (
+				B96D576527410066006B7756 /* Controllers */,
+				B96D576627410088006B7756 /* Cells */,
+				B96D576727410097006B7756 /* Extensions */,
 				B9227304273C1C3400797BE2 /* AppDelegate.swift */,
 				B9227306273C1C3400797BE2 /* SceneDelegate.swift */,
-				B9227308273C1C3400797BE2 /* AuthViewController.swift */,
-				B9D2C90D2740097400394A83 /* SignUpViewController.swift */,
-				B9D2C90A2740080C00394A83 /* UIStackView + Extension.swift */,
-				B9133776273EB35B006114A3 /* AlbumsViewController.swift */,
-				B913377F273EB7E1006114A3 /* DetailAlbumViewController.swift */,
-				B9D2C91027400BCD00394A83 /* SongsCollectionViewCell.swift */,
-				B913377C273EB72F006114A3 /* UserInfoViewController.swift */,
-				B9133779273EB437006114A3 /* AlbumsTableViewCell.swift */,
 				B922730A273C1C3400797BE2 /* Main.storyboard */,
 				B922730D273C1C3800797BE2 /* Assets.xcassets */,
 				B922730F273C1C3800797BE2 /* LaunchScreen.storyboard */,
 				B9227312273C1C3800797BE2 /* Info.plist */,
 			);
 			path = AuthTest;
+			sourceTree = "<group>";
+		};
+		B96D576527410066006B7756 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B9227308273C1C3400797BE2 /* AuthViewController.swift */,
+				B9D2C90D2740097400394A83 /* SignUpViewController.swift */,
+				B9133776273EB35B006114A3 /* AlbumsViewController.swift */,
+				B913377F273EB7E1006114A3 /* DetailAlbumViewController.swift */,
+				B913377C273EB72F006114A3 /* UserInfoViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B96D576627410088006B7756 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B9D2C91027400BCD00394A83 /* SongsCollectionViewCell.swift */,
+				B9133779273EB437006114A3 /* AlbumsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B96D576727410097006B7756 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B9D2C90A2740080C00394A83 /* UIStackView + Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
