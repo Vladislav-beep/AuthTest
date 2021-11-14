@@ -232,6 +232,27 @@ extension SignUpViewController: UITextFieldDelegate {
                                               wrongMessage: "Name is not valid",
                                               string: string,
                                               range: range)
+        case secondNameTextField: setTextField(textField: textField,
+                                              label: secondNameValidLabel,
+                                              validType: nameValidType,
+                                              validMessage: "Second name is valid",
+                                              wrongMessage: "Second name is not valid",
+                                              string: string,
+                                              range: range)
+        case emailTextField: setTextField(textField: textField,
+                                              label: emailValidLabel,
+                                              validType: emailValidType,
+                                              validMessage: "Email is valid",
+                                              wrongMessage: "Email is not valid",
+                                              string: string,
+                                              range: range)
+        case passwordTextField: setTextField(textField: textField,
+                                              label: passwordValidLabel,
+                                              validType: passwordValidTyper,
+                                              validMessage: "Password is valid",
+                                              wrongMessage: "Password is not valid",
+                                              string: string,
+                                              range: range)
         default:
             break
         }
