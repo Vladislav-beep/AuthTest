@@ -216,6 +216,43 @@ class SignUpViewController: UIViewController {
             label.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         }
     }
+    
+    private func setPhoneNumberMask(textfield: UITextField, mask: String, string: String, range: NSRange) -> String {
+        
+        let text = textfield.text ?? ""
+        let phone = (text as NSString).replacingCharacters(in: range, with: string)
+        let number = phone.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = number.startIndex
+        
+        for character in mask where index < number.endIndex {
+            if character == "X" {
+                result.append(number[index])
+                index = number.index(after: index)
+            } else {
+                result.append(character)
+            }
+        }
+        if result.count == 18 {
+            phoneValidLabel.text = "Phone is valid"
+            phoneValidLabel.textColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        } else {
+            phoneValidLabel.text = "Phone is not valid"
+            phoneValidLabel.textColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        }
+        
+        return result
+    }
+    
+    private func ageIsValid() -> Bool {
+        let calendar = NSCalendar.current
+        let dateNow = Date()
+        let birthDay = datePicker.date
+        
+        let age = calendar.dateComponents([.year], from: birthDay, to: dateNow)
+        guard let ageYear = age.year else { return false }
+        return (ageYear < 18 ? false : true)
+    }
 }
 
 
@@ -253,6 +290,10 @@ extension SignUpViewController: UITextFieldDelegate {
                                               wrongMessage: "Password is not valid",
                                               string: string,
                                               range: range)
+        case phoneNumberTextField: phoneNumberTextField.text = setPhoneNumberMask(textfield: phoneNumberTextField,
+                                                                                  mask: "+X (XXX) XXX-XX-XX",
+                                                                                  string: string,
+                                                                                  range: range)
         default:
             break
         }
