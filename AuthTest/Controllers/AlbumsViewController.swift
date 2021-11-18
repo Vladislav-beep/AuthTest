@@ -24,6 +24,8 @@ class AlbumsViewController: UIViewController {
         
         setupView()
         setupDelegate()
+        setupNavigationBar()
+        setupSearchController()
     }
     
     private func setupView() {
