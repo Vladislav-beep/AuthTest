@@ -191,7 +191,28 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func signUpButtonTapped() {
-        print("SignUpTap")
+        let firstNameText = firstNameTextField.text ?? ""
+        let secondNameText = secondNameTextField.text ?? ""
+        let emailText = emailTextField.text ?? ""
+        let phoneText = phoneNumberTextField.text ?? ""
+        let passwordText = passwordTextField.text ?? ""
+        
+        if firstNameText.isValid(validType: nameValidType)
+            && secondNameText.isValid(validType: nameValidType)
+            && emailText.isValid(validType: emailValidType)
+            && phoneText.count == 18
+            && passwordText.isValid(validType: passwordValidTyper)
+            && ageIsValid() == true {
+            DataBase.shared.saveUser(firstName: firstNameText,
+                                     secondName: secondNameText,
+                                     phone: phoneText,
+                                     email: emailText,
+                                     password: passwordText,
+                                     age: datePicker.date)
+            dismiss(animated: true)
+        } else {
+            showOkAlert(title: "Error", message: "All fields must be valid")
+        }
     }
     
     private func setTextField(textField: UITextField, label: UILabel, validType: String.ValidTypes, validMessage: String, wrongMessage: String, string: String, range: NSRange) {
@@ -383,8 +404,6 @@ extension SignUpViewController  {
         NotificationCenter.default.removeObserver(self,
                                                   name: UIResponder.keyboardWillHideNotification,
                                                   object: nil)
-        
-     
     }
 }
 
