@@ -18,29 +18,32 @@ class AlbumsViewController: UIViewController {
     }()
     
     private let searchController = UISearchController(searchResultsController: nil)
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView()
+        setupViews()
         setupDelegate()
-        setupNavigationBar()
+        setConstraints()
+        setNavigationBar()
         setupSearchController()
     }
-    
-    private func setupView() {
+
+    private func setupViews() {
         view.backgroundColor = .white
         view.addSubview(tableView)
     }
     
     private func setupDelegate() {
-        tableView.dataSource = self
         tableView.delegate = self
+        tableView.dataSource = self
+        
         searchController.searchBar.delegate = self
     }
     
-    private func setupNavigationBar() {
+    private func setNavigationBar() {
         navigationItem.title = "Albums"
+       
         navigationItem.searchController = searchController
         
         let userInfoButton = createCustomButton(selector: #selector(userInfoButtonTapped))
@@ -55,21 +58,20 @@ class AlbumsViewController: UIViewController {
     @objc private func userInfoButtonTapped() {
         let userInfoViewController = UserInfoViewController()
         navigationController?.pushViewController(userInfoViewController, animated: true)
-        
+
     }
 }
 
 //MARK: - UITableViewDataSource
-
 extension AlbumsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? AlbumsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AlbumsTableViewCell
         
-        return cell ?? UITableViewCell()
+        return cell
     }
 }
 
@@ -89,7 +91,7 @@ extension AlbumsViewController: UITableViewDelegate {
 //MARK: - UISearchBarDelegate
 extension AlbumsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+          
         print(searchText)
     }
 }
@@ -105,20 +107,6 @@ extension AlbumsViewController {
             tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
         ])
-    }
-}
-
-extension UIViewController {
-    
-    func createCustomButton(selector: Selector) -> UIBarButtonItem {
-        
-        let button = UIButton(type: .system)
-        button.setImage(UIImage(systemName: "person.fill"), for: .normal)
-        button.tintColor = .black
-        button.addTarget(self, action: selector, for: .touchUpInside)
-        
-        let menuBarItem = UIBarButtonItem(customView: button)
-        return menuBarItem
     }
 }
 
