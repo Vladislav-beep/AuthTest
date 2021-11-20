@@ -22,6 +22,8 @@
 		B951D6982746461900C63EC4 /* OkAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951D6972746461900C63EC4 /* OkAlert.swift */; };
 		B951D69B2746555700C63EC4 /* Viecontroller Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B951D69A2746555700C63EC4 /* Viecontroller Extension.swift */; };
 		B96D576A27411677006B7756 /* String + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D576927411677006B7756 /* String + Extension.swift */; };
+		B98000C6274988D000A620AA /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98000C5274988D000A620AA /* NetworkRequest.swift */; };
+		B98000C927498A7B00A620AA /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98000C827498A7B00A620AA /* NetworkDataFetcher.swift */; };
 		B9CCD63A274833880034FED8 /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CCD639274833880034FED8 /* AlbumModel.swift */; };
 		B9D2C90B2740080C00394A83 /* UIStackView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D2C90A2740080C00394A83 /* UIStackView + Extension.swift */; };
 		B9D2C90E2740097400394A83 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D2C90D2740097400394A83 /* SignUpViewController.swift */; };
@@ -46,6 +48,8 @@
 		B951D6972746461900C63EC4 /* OkAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OkAlert.swift; sourceTree = "<group>"; };
 		B951D69A2746555700C63EC4 /* Viecontroller Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Viecontroller Extension.swift"; sourceTree = "<group>"; };
 		B96D576927411677006B7756 /* String + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extension.swift"; sourceTree = "<group>"; };
+		B98000C5274988D000A620AA /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		B98000C827498A7B00A620AA /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
 		B9CCD639274833880034FED8 /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		B9D2C90A2740080C00394A83 /* UIStackView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView + Extension.swift"; sourceTree = "<group>"; };
 		B9D2C90D2740097400394A83 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				B951D68F27463DD900C63EC4 /* UserDefaultsManager.swift */,
+				B98000CB27498A8400A620AA /* Network */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -144,6 +149,15 @@
 				B951D69A2746555700C63EC4 /* Viecontroller Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B98000CB27498A8400A620AA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B98000C5274988D000A620AA /* NetworkRequest.swift */,
+				B98000C827498A7B00A620AA /* NetworkDataFetcher.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +236,7 @@
 				B913377D273EB72F006114A3 /* UserInfoViewController.swift in Sources */,
 				B951D6982746461900C63EC4 /* OkAlert.swift in Sources */,
 				B9D2C91127400BCD00394A83 /* SongsCollectionViewCell.swift in Sources */,
+				B98000C927498A7B00A620AA /* NetworkDataFetcher.swift in Sources */,
 				B951D69527463E5600C63EC4 /* UserModel.swift in Sources */,
 				B9227309273C1C3400797BE2 /* AuthViewController.swift in Sources */,
 				B9227305273C1C3400797BE2 /* AppDelegate.swift in Sources */,
@@ -232,6 +247,7 @@
 				B9CCD63A274833880034FED8 /* AlbumModel.swift in Sources */,
 				B9D2C90B2740080C00394A83 /* UIStackView + Extension.swift in Sources */,
 				B951D69B2746555700C63EC4 /* Viecontroller Extension.swift in Sources */,
+				B98000C6274988D000A620AA /* NetworkRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
