@@ -9,6 +9,9 @@ import UIKit
 
 class AlbumsViewController: UIViewController {
     
+    var albums = [Album]()
+    var timer: Timer?
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.backgroundColor = .white
@@ -27,6 +30,8 @@ class AlbumsViewController: UIViewController {
         setConstraints()
         setNavigationBar()
         setupSearchController()
+        
+        fetchAlbums(albumName: "Sheffield")
     }
 
     private func setupViews() {
@@ -53,6 +58,19 @@ class AlbumsViewController: UIViewController {
     private func setupSearchController() {
         searchController.searchBar.placeholder = "Search"
         searchController.obscuresBackgroundDuringPresentation = false
+    }
+    
+    private func fetchAlbums(albumName: String) {
+        let urlString = "https://itunes.apple.com/search?term=\(albumName)&entity=album&attribute=albumTerm"
+        NetworkDataFetcher.shared.fetchAlbums(urlString: urlString) { [weak self] albumModel, error in
+            if error == nil {
+                guard let albumModel = albumModel else { return }
+                self?.albums = albumModel.results
+                print(self?.albums)
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
     }
     
     @objc private func userInfoButtonTapped() {
@@ -92,7 +110,13 @@ extension AlbumsViewController: UITableViewDelegate {
 extension AlbumsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
           
-        print(searchText)
+        if searchText != "" {
+            timer?.invalidate()
+            timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] (_) in
+                self?.fetchAlbums(albumName: searchText)
+            })
+            
+        }
     }
 }
 

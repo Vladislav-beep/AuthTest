@@ -93,24 +93,27 @@ class AuthViewController: UIViewController {
     }
     
     @objc func signInButtonTapped() {
-        let mail = emailTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-        let user = findUserDataBase(mail: mail)
-        
-        if user == nil {
-            loginLabel.text = "User does not exit"
-            loginLabel.textColor = .red
-        } else if user?.password == password {
-            let navVC = UINavigationController(rootViewController: AlbumsViewController())
-            navVC.modalPresentationStyle = .fullScreen
-            present(navVC, animated: true)
-            
-            guard let activeUser = user else { return }
-            DataBase.shared.saveActiveUser(user: activeUser)
-        } else {
-            loginLabel.text = "Wrong password"
-            loginLabel.textColor = .red
-        }
+//        let mail = emailTextField.text ?? ""
+//        let password = passwordTextField.text ?? ""
+//        let user = findUserDataBase(mail: mail)
+//
+//        if user == nil {
+//            loginLabel.text = "User does not exit"
+//            loginLabel.textColor = .red
+//        } else if user?.password == password {
+//            let navVC = UINavigationController(rootViewController: AlbumsViewController())
+//            navVC.modalPresentationStyle = .fullScreen
+//            present(navVC, animated: true)
+//
+//            guard let activeUser = user else { return }
+//            DataBase.shared.saveActiveUser(user: activeUser)
+//        } else {
+//            loginLabel.text = "Wrong password"
+//            loginLabel.textColor = .red
+//        }
+        let navVC = UINavigationController(rootViewController: AlbumsViewController())
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true) 
         
     }
     

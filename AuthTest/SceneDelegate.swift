@@ -14,10 +14,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-                window = UIWindow(windowScene: windowScene)
-                window?.rootViewController = AuthViewController()
-                window?.makeKeyAndVisible()
-                window?.overrideUserInterfaceStyle = .light
+        window = UIWindow(windowScene: windowScene)
+      //  window?.rootViewController = AlbumsViewController()
+            window?.rootViewController = AuthViewController()
+        window?.makeKeyAndVisible()
+        window?.overrideUserInterfaceStyle = .light
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
