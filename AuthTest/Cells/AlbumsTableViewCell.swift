@@ -74,6 +74,28 @@ class AlbumsTableViewCell: UITableViewCell {
         self.addSubview(stackView)
     }
     
+    func configureCell(album: Album) {
+        if let urlString = album.artworkUrl100 {
+            NetworkRequest.shared.requestData(urlString: urlString) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    let image = UIImage(data: data)
+                    self?.albumLogo.image = image
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self?.albumLogo.image = nil
+                }
+            }
+        } else {
+            self.albumLogo.image = nil
+        }
+        
+        
+        albumNameLabel.text = album.collectionName
+        artistNameLabel.text = album.artistName
+        trackCountLabel.text = "\(album.trackCount) - tracks"
+    }
+    
     private func setConstraints() {
         
         NSLayoutConstraint.activate([

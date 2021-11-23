@@ -65,10 +65,15 @@ class AlbumsViewController: UIViewController {
         NetworkDataFetcher.shared.fetchAlbums(urlString: urlString) { [weak self] albumModel, error in
             if error == nil {
                 guard let albumModel = albumModel else { return }
-                self?.albums = albumModel.results
-                print(self?.albums)
+                
+                let sortedAlbums = albumModel.results.sorted { first, second in
+                    return first.collectionName.compare(second.collectionName) == ComparisonResult.orderedAscending
+                }
+                self?.albums = sortedAlbums
+                self?.tableView.reloadData()
+                
             } else {
-                print(error?.localizedDescription)
+                print("\(error?.localizedDescription ?? "error")")
             }
         }
     }
@@ -83,11 +88,13 @@ class AlbumsViewController: UIViewController {
 //MARK: - UITableViewDataSource
 extension AlbumsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        albums.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! AlbumsTableViewCell
+        let album = albums[indexPath.row]
+        cell.configureCell(album: album)
         
         return cell
     }
@@ -115,7 +122,6 @@ extension AlbumsViewController: UISearchBarDelegate {
             timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] (_) in
                 self?.fetchAlbums(albumName: searchText)
             })
-            
         }
     }
 }
