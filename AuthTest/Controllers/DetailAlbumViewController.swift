@@ -58,6 +58,7 @@ class DetailAlbumViewController: UIViewController {
     
     private var stackView = UIStackView()
     var album: Album?
+    var songs = [Song]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +66,8 @@ class DetailAlbumViewController: UIViewController {
         setupViews()
         setConstraints()
         setDelegate()
+        setModel()
+        fetchSongs(album: album)
     }
     
     private func setupViews() {
@@ -87,17 +90,73 @@ class DetailAlbumViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    
+    private func setModel() {
+        guard let album = album else { return }
+        
+        albumNameLabel.text = album.collectionName
+        artistNameLabel.text = album.artistName
+        trackCountLabel.text = "\(album.trackCount) tracks"
+        releaseDateLabel.text = setDateFormat(date: album.releaseDate)
+        setImage(url: album.artworkUrl100)
+        
+    }
+    
+    private func setDateFormat(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+        guard let backendDate = dateFormatter.date(from: date) else { return ""}
+        
+        let formatDate = DateFormatter()
+        formatDate.dateFormat = "dd-MM-yyyy"
+        let date = formatDate.string(from: backendDate)
+        return date
+    }
+    
+    private func setImage(url: String?) {
+        if let url = url {
+            NetworkRequest.shared.requestData(urlString: url) { [weak self] result in
+                switch result {
+                case .success(let data):
+                    let image = UIImage(data: data)
+                    self?.albumLogo.image = image
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self?.albumLogo.image = nil
+                }
+            }
+        } else {
+            self.albumLogo.image = nil
+        }
+    }
+    
+    private func fetchSongs(album: Album?) {
+        guard let album = album else { return }
+        let idAlbum = album.collectionId
+        let urlString = "https://itunes.apple.com/lookup?id=\(idAlbum)&entity=song"
+        
+        NetworkDataFetcher.shared.fetchSongs(urlString: urlString) { [weak self] songsModel, error in
+            if error == nil {
+                guard let songsModel = songsModel else { return }
+                self?.songs = songsModel.results
+                self?.collectionView.reloadData()
+            } else {
+                self?.showOkAlert(title: "Error", message: "Can't load songs")
+            }
+        }
+    }
 }
 
 //MARK: CollectionView Delegate
 extension DetailAlbumViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        songs.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SongsCollectionViewCell
-        cell.nameSongLabel.text = "Name song"
+        let song = songs[indexPath.row].trackName
+        cell.nameSongLabel.text = song
         return cell
     }
     

@@ -112,7 +112,7 @@ extension AlbumsViewController: UITableViewDelegate {
         let detailAlbumViewController = DetailAlbumViewController()
         let album = albums[indexPath.row]
         detailAlbumViewController.album = album
-        detailAlbumViewController.title = album.artistName 
+        detailAlbumViewController.title = album.artistName  
         navigationController?.pushViewController(detailAlbumViewController, animated: true)
     }
 }
