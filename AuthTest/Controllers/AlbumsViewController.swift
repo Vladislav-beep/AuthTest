@@ -30,8 +30,6 @@ class AlbumsViewController: UIViewController {
         setConstraints()
         setNavigationBar()
         setupSearchController()
-        
-        fetchAlbums(albumName: "Sheffield")
     }
 
     private func setupViews() {
@@ -66,12 +64,15 @@ class AlbumsViewController: UIViewController {
             if error == nil {
                 guard let albumModel = albumModel else { return }
                 
-                let sortedAlbums = albumModel.results.sorted { first, second in
-                    return first.collectionName.compare(second.collectionName) == ComparisonResult.orderedAscending
+                if albumModel.results != [] {
+                    let sortedAlbums = albumModel.results.sorted { first, second in
+                        return first.collectionName.compare(second.collectionName) == ComparisonResult.orderedAscending
+                    }
+                    self?.albums = sortedAlbums
+                    self?.tableView.reloadData()
+                } else {
+                    self?.showOkAlert(title: "Error", message: "Add some words")
                 }
-                self?.albums = sortedAlbums
-                self?.tableView.reloadData()
-                
             } else {
                 print("\(error?.localizedDescription ?? "error")")
             }
@@ -109,6 +110,9 @@ extension AlbumsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailAlbumViewController = DetailAlbumViewController()
+        let album = albums[indexPath.row]
+        detailAlbumViewController.album = album
+        detailAlbumViewController.title = album.artistName 
         navigationController?.pushViewController(detailAlbumViewController, animated: true)
     }
 }
@@ -116,11 +120,13 @@ extension AlbumsViewController: UITableViewDelegate {
 //MARK: - UISearchBarDelegate
 extension AlbumsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        let text = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
           
-        if searchText != "" {
+        if text != "" {
             timer?.invalidate()
             timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { [weak self] (_) in
-                self?.fetchAlbums(albumName: searchText)
+                self?.fetchAlbums(albumName: text! )
             })
         }
     }
